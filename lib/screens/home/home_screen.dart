@@ -3,6 +3,8 @@ import 'package:firebase_ai_logic/utilities/app_color.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
+  static String routeName = 'homeScreen';
+  static String routeLocation = '/$routeName';
   const HomeScreen({super.key});
 
   @override

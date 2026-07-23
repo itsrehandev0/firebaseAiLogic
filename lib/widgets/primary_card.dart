@@ -11,6 +11,7 @@ class PrimaryCard extends StatelessWidget {
     this.backgroundColor,
     this.padding,
     this.margin,
+    this.onTap,
     required this.child,
   });
   final Color? borderColor;
@@ -19,22 +20,26 @@ class PrimaryCard extends StatelessWidget {
   final Color? backgroundColor;
   final EdgeInsets? padding;
   final EdgeInsets? margin;
+  final Function()? onTap;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: padding ?? EdgeInsets.zero,
-      margin: margin ?? EdgeInsets.zero,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: borderColor ?? AppColor.cardColor,
-          width: width ?? 1,
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: padding ?? EdgeInsets.zero,
+        margin: margin ?? EdgeInsets.zero,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: borderColor ?? AppColor.cardColor,
+            width: width ?? 1,
+          ),
+          borderRadius: BorderRadius.circular(borderRadius),
+          color: backgroundColor,
         ),
-        borderRadius: BorderRadius.circular(borderRadius),
-        color: backgroundColor,
+        child: child,
       ),
-      child: child,
     );
   }
 }

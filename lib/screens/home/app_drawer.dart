@@ -1,7 +1,9 @@
+import 'package:firebase_ai_logic/screens/featueres/generate_food_screen.dart';
 import 'package:firebase_ai_logic/utilities/app_color.dart';
 import 'package:firebase_ai_logic/utilities/app_images.dart';
 import 'package:firebase_ai_logic/widgets/primary_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -30,6 +32,9 @@ class _AppFeatures extends StatelessWidget {
           title: 'Food',
           subTitle: 'Generate food reciepe',
           icon: Icons.abc_sharp,
+          onTap: () {
+           context.pushNamed(GenerateFoodScreen.routeName);
+          },
         ),
       ],
     );
