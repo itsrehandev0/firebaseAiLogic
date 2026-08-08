@@ -49,7 +49,7 @@ class _DrawerHeader extends StatelessWidget {
     return DrawerHeader(
       child: Column(
         children: [
-          Image.asset(AppImages.appLogo, height: 100, width: 100),
+          Image.asset(AppImages.purpleLogo, height: 100, width: 100),
           SizedBox(height: 8),
           Text(
             'FIREBASE AI',
