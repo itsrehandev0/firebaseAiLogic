@@ -30,6 +30,9 @@ class PrimaryTextField extends StatelessWidget {
           cursorColor: AppColor.backgroundColor,
           decoration: InputDecoration(
             hintText: hintText,
+            hintStyle: TextStyle(
+              color: AppColor.cardColor.withValues(alpha: 0.7),
+            ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(24),
             ),
