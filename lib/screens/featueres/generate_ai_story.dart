@@ -1,4 +1,4 @@
-import 'package:firebase_ai_logic/provider/generate_food_provider.dart';
+import 'package:firebase_ai_logic/provider/ai_story_provider.dart';
 import 'package:firebase_ai_logic/utilities/app_color.dart';
 import 'package:firebase_ai_logic/widgets/primary_button.dart';
 import 'package:firebase_ai_logic/widgets/primary_card.dart';
@@ -8,11 +8,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class GenerateFoodScreen extends HookConsumerWidget {
-  static String routeName = 'generateFood';
+class GenerateAiStory extends HookConsumerWidget {
+  static String routeName = 'ai-story';
   static String routeLocation = '/$routeName';
-
-  const GenerateFoodScreen({super.key});
+  const GenerateAiStory({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,39 +21,36 @@ class GenerateFoodScreen extends HookConsumerWidget {
       appBar: AppBar(
         backgroundColor: AppColor.backgroundColor,
         centerTitle: true,
-        title: Text('Food'),
+        title: Text('AI Story'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
               PrimaryTextField(
-                textInputAction: TextInputAction.next,
                 controller: titleContoller,
+                textInputAction: TextInputAction.next,
                 title: 'Title',
-                hintText: 'Enter food name',
+                hintText: 'Story Name...',
               ),
               SizedBox(height: 8),
               PrimaryTextField(
-                textInputAction: TextInputAction.done,
-
                 controller: descContoller,
+                textInputAction: TextInputAction.done,
                 title: 'Description',
-                hintText: 'Enter food Descriptoin',
+                hintText: 'About Story....',
               ),
               SizedBox(height: 16),
               PrimaryButton(
-                text: 'Generate',
+                text: 'Genearte',
                 onTap: () {
-                  final aiLogic = ref.read(generateFoodProvider.notifier);
+                  final aiLogic = ref.read(aiStoryProvider.notifier);
                   final title = titleContoller.text.trim();
                   final description = descContoller.text.trim();
-                  if (title.isNotEmpty && description.isNotEmpty) {
-                    aiLogic.generateFood(title, description);
-                    titleContoller.clear();
-                    descContoller.clear();
-                  }
+                  aiLogic.generateAiStory(title, description);
+                  titleContoller.clear();
+                  descContoller.clear();
                 },
               ),
               SizedBox(height: 16),
@@ -72,29 +68,20 @@ class _ResultCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final asyncAiLogic = ref.watch(generateFoodProvider);
-    return asyncAiLogic.when(
-      data: (recipe) {
-        if (recipe.isEmpty) {
+    final asyncStory = ref.watch(aiStoryProvider);
+    return asyncStory.when(
+      data: (story) {
+        if (story.isEmpty) {
           return SizedBox();
         }
         return PrimaryCard(
-          borderColor: AppColor.backgroundColor,
+          padding: EdgeInsets.all(8),
           width: 2,
-          padding: const EdgeInsets.all(16),
-          child: MarkdownBody(
-            data: recipe,
-            softLineBreak: true,
-            styleSheet: MarkdownStyleSheet(
-              h1: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              h2: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              p: const TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
-              listBullet: const TextStyle(fontSize: 16),
-            ),
-          ),
+          borderColor: AppColor.backgroundColor,
+          child: MarkdownBody(data: story),
         );
       },
-      error: (e, t) => Center(child: Text(e.toString())),
+      error: (e, t) => Text(e.toString()),
       loading: () =>
           Column(children: [SizedBox(height: 60), CircularProgressIndicator()]),
     );

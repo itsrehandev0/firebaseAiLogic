@@ -6,9 +6,13 @@ class PrimaryTextField extends StatelessWidget {
     super.key,
     required this.title,
     required this.hintText,
+    this.controller,
+    this.textInputAction
   });
   final String title;
   final String hintText;
+  final TextEditingController? controller;
+  final TextInputAction? textInputAction;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +25,14 @@ class PrimaryTextField extends StatelessWidget {
         ),
         SizedBox(height: 8),
         TextFormField(
+          textInputAction: textInputAction,
+          controller: controller,
           cursorColor: AppColor.backgroundColor,
           decoration: InputDecoration(
             hintText: hintText,
+            hintStyle: TextStyle(
+              color: AppColor.cardColor.withValues(alpha: 0.7),
+            ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(24),
             ),
