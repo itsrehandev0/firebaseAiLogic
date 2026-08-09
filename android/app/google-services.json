@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "545698172331",
+    "project_id": "fireabseailogic",
+    "storage_bucket": "fireabseailogic.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545698172331:android:1f5be47226948340b116ee",
+        "android_client_info": {
+          "package_name": "com.example.firebase_ai_logic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDji93EMThXoj1alsRLL-6z-LC-C0cBlDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
