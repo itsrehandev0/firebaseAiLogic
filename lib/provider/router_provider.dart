@@ -1,3 +1,4 @@
+import 'package:firebase_ai_logic/screens/featueres/generate_ai_story.dart';
 import 'package:firebase_ai_logic/screens/featueres/generate_food_screen.dart';
 import 'package:firebase_ai_logic/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,11 @@ class RouterProvider {
           name: GenerateFoodScreen.routeName,
           path: GenerateFoodScreen.routeLocation,
           builder: (context, state) => GenerateFoodScreen(),
+        ),
+        GoRoute(
+          name: GenerateAiStory.routeName,
+          path: GenerateAiStory.routeLocation,
+          builder: (context, state) => GenerateAiStory(),
         ),
       ],
     );
