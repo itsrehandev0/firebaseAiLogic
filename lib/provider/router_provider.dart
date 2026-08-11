@@ -1,4 +1,4 @@
-import 'package:firebase_ai_logic/screens/featueres/generate_ai_story.dart';
+import 'package:firebase_ai_logic/screens/featueres/AiStory/generate_ai_story.dart';
 import 'package:firebase_ai_logic/screens/featueres/generate_food_screen.dart';
 import 'package:firebase_ai_logic/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';

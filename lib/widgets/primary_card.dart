@@ -31,10 +31,12 @@ class PrimaryCard extends StatelessWidget {
         padding: padding ?? EdgeInsets.zero,
         margin: margin ?? EdgeInsets.zero,
         decoration: BoxDecoration(
-          border: Border.all(
-            color: borderColor ?? AppColor.cardColor,
-            width: width ?? 1,
-          ),
+          border: borderColor != null
+              ? Border.all(
+                  color: borderColor ?? AppColor.cardColor,
+                  width: width ?? 1,
+                )
+              : null,
           borderRadius: BorderRadius.circular(borderRadius),
           color: backgroundColor,
         ),

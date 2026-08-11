@@ -1,4 +1,5 @@
 import 'package:firebase_ai_logic/provider/ai_story_provider.dart';
+import 'package:firebase_ai_logic/screens/featueres/AiStory/voice_assistant_sheet.dart';
 import 'package:firebase_ai_logic/utilities/app_color.dart';
 import 'package:firebase_ai_logic/widgets/primary_button.dart';
 import 'package:firebase_ai_logic/widgets/primary_card.dart';
@@ -22,6 +23,12 @@ class GenerateAiStory extends HookConsumerWidget {
         backgroundColor: AppColor.backgroundColor,
         centerTitle: true,
         title: Text('AI Story'),
+        actions: [
+          IconButton(onPressed: () {
+            VoiceAssistantSheet.show(context);
+          }, icon: Icon(Icons.mic)),
+          SizedBox(width: 24),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
