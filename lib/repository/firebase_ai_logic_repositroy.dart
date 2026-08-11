@@ -90,7 +90,7 @@ class FirebaseAiLogicRepository {
           # Story Title
           Story Type: <story type>
           ## Characters
-          ## Make Scenes
+          ## Scenes
           ## Scens Time
           ## Tatal Story Time
     ''';

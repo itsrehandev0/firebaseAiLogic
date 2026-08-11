@@ -1,3 +1,4 @@
+import 'package:firebase_ai_logic/utilities/app_color.dart';
 import 'package:firebase_ai_logic/widgets/primary_card.dart';
 import 'package:flutter/material.dart';
 
@@ -17,12 +18,13 @@ class PrimaryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PrimaryCard(
+      borderColor: AppColor.cardColor,
       borderRadius: 16,
       margin: EdgeInsets.symmetric(horizontal: 8),
       child: ListTile(
         onTap: onTap,
         contentPadding: EdgeInsets.symmetric(horizontal: 12),
-        title: Text(title),
+        title: Text(title, style: TextStyle(fontWeight: FontWeight.w700)),
         subtitle: Text(subTitle),
         leading: CircleAvatar(child: Icon(icon)),
         trailing: Icon(Icons.chevron_right),
